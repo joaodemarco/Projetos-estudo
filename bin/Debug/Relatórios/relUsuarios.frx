@@ -1,0 +1,181 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" StartReportEvent="_StartReport" ReportInfo.Created="09/19/2024 10:33:41" ReportInfo.Modified="09/19/2024 16:32:42" ReportInfo.CreatorVersion="2020.1.17.0">
+  <ScriptText>using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Windows.Forms;
+using System.Drawing;
+using System.Data;
+using FastReport;
+using FastReport.Data;
+using FastReport.Dialog;
+using FastReport.Barcode;
+using FastReport.Table;
+using FastReport.Utils;
+
+namespace FastReport
+{
+  public class ReportScript
+  {
+
+    private void _StartReport(object sender, EventArgs e)
+    {
+        
+    }
+
+    private void Text11_BeforePrint(object sender, EventArgs e)
+    {
+      string permissao_cad_cliente = Report.GetColumnValue(&quot;relatorio.cad_cliente&quot;).ToString();
+      
+      if (permissao_cad_cliente == &quot;N&quot;)
+      {
+        (sender as TextObject).Text = &quot;Não possui permissão.&quot;;
+      }
+      else
+      {
+        string permissao_inserir = Report.GetColumnValue (&quot;relatorio.inserir_cliente&quot;).ToString();
+        if (permissao_inserir == &quot;S&quot;){
+          (sender as TextObject).Text += &quot;Permissões: Inserir clientes&quot;;}
+        string permissao_alterar = Report.GetColumnValue (&quot;relatorio.alterar_cliente&quot;).ToString();
+        if (permissao_alterar == &quot;S&quot; &amp;&amp; permissao_inserir == &quot;N&quot;){
+          (sender as TextObject).Text +=&quot;Permissões: Alterar cadastros&quot;;}
+        if (permissao_alterar == &quot;S&quot; &amp;&amp; permissao_inserir == &quot;S&quot;){
+          (sender as TextObject).Text +=&quot;, alterar cadastros&quot;;}
+        string permissao_pesquisar = Report.GetColumnValue (&quot;relatorio.pesquisar_cliente&quot;).ToString();
+        if (permissao_pesquisar == &quot;S&quot; &amp;&amp; permissao_alterar == &quot;N&quot; &amp;&amp; permissao_inserir == &quot;N&quot;){
+          (sender as TextObject).Text +=&quot;Permissões: Pesquisar produtos&quot;;}
+        if (permissao_pesquisar == &quot;S&quot; &amp;&amp; (permissao_alterar == &quot;S&quot; || permissao_inserir == &quot;S&quot;)){
+          (sender as TextObject).Text += &quot;, pesquisar produtos&quot;;}
+        if (permissao_cad_cliente == &quot;S&quot; &amp;&amp; (permissao_alterar == &quot;N&quot; &amp;&amp; permissao_inserir == &quot;N&quot; &amp;&amp; permissao_pesquisar == &quot;N&quot;)){
+          (sender as TextObject).Text += &quot;Permissão para abrir tela de cadastro.&quot;;}
+      }
+    }
+
+    private void Text12_BeforePrint(object sender, EventArgs e)
+    {
+       string permissao_cad_produto = Report.GetColumnValue(&quot;relatorio.cad_produto&quot;).ToString();
+      if (permissao_cad_produto == &quot;N&quot;){
+        (sender as TextObject).Text = &quot;Não possui permissão.&quot;;}
+      string permissao_inserir_produto = Report.GetColumnValue (&quot;relatorio.inserir_produto&quot;).ToString();
+      string permissao_alterar_produto = Report.GetColumnValue (&quot;relatorio.alterar_produto&quot;).ToString();
+      string permissao_pesquisar_produto = Report.GetColumnValue (&quot;relatorio.pesquisar_produto&quot;).ToString();
+      if (permissao_inserir_produto == &quot;S&quot;){
+        (sender as TextObject).Text += &quot;Permissões: Inserir produtos&quot;;}
+      if (permissao_alterar_produto == &quot;S&quot; &amp;&amp; permissao_inserir_produto == &quot;S&quot;){
+        (sender as TextObject).Text += &quot;, alterar cadastros&quot;;}
+      if (permissao_alterar_produto == &quot;S&quot; &amp;&amp; permissao_inserir_produto == &quot;N&quot;){
+        (sender as TextObject).Text += &quot;Permissões: Alterar cadastros&quot;;}
+      if (permissao_pesquisar_produto == &quot;S&quot; &amp;&amp; permissao_inserir_produto == &quot;N&quot; &amp;&amp; permissao_alterar_produto == &quot;N&quot;){
+        (sender as TextObject).Text += &quot;Permissões: Pesquisar produtos.&quot;;}
+      if (permissao_pesquisar_produto == &quot;S&quot; &amp; (permissao_inserir_produto == &quot;S&quot; || permissao_alterar_produto == &quot;S&quot;)){
+        (sender as TextObject).Text += &quot;, pesquisar produtos.&quot;;}
+      if (permissao_cad_produto == &quot;S&quot; &amp;&amp; (permissao_alterar_produto == &quot;N&quot; &amp;&amp; permissao_inserir_produto == &quot;N&quot; &amp;&amp; permissao_pesquisar_produto == &quot;N&quot;)){
+        (sender as TextObject).Text += &quot;Permissão para abrir tela de cadastro.&quot;;}
+    }
+
+    private void Text13_BeforePrint(object sender, EventArgs e)
+    {
+      string permissao_cad_usuario = Report.GetColumnValue(&quot;relatorio.cad_usuario&quot;).ToString();
+      if (permissao_cad_usuario == &quot;N&quot;){
+        (sender as TextObject).Text = &quot;Não possui permissão.&quot;;
+      }
+
+      string permissao_inserir_usuario = Report.GetColumnValue(&quot;relatorio.inserir_usuario&quot;).ToString();
+      string permissao_alterar_usuario = Report.GetColumnValue(&quot;relatorio.alterar_usuario&quot;).ToString();
+      string permissao_pesquisar_usuario = Report.GetColumnValue(&quot;relatorio.pesquisar_usuario&quot;).ToString();
+
+      if (permissao_inserir_usuario == &quot;S&quot;){
+        (sender as TextObject).Text += &quot;Permissões: Incluir novos usuários&quot;;
+      }
+
+      if (permissao_alterar_usuario == &quot;S&quot; &amp;&amp; permissao_inserir_usuario == &quot;S&quot;){
+        (sender as TextObject).Text += &quot;, alterar cadastros&quot;;
+      }
+
+      if (permissao_alterar_usuario == &quot;S&quot; &amp;&amp; permissao_inserir_usuario == &quot;N&quot;){
+        (sender as TextObject).Text += &quot;Permissões: Alterar cadastros&quot;;
+      }
+
+      if (permissao_pesquisar_usuario == &quot;S&quot; &amp;&amp; permissao_inserir_usuario == &quot;N&quot; &amp;&amp; permissao_alterar_usuario == &quot;N&quot;){
+        (sender as TextObject).Text += &quot;Permissões: Pesquisar usuários.&quot;;
+      }
+
+      if (permissao_pesquisar_usuario == &quot;S&quot; &amp;&amp; (permissao_inserir_usuario == &quot;S&quot; || permissao_alterar_usuario == &quot;S&quot;)){
+        (sender as TextObject).Text += &quot;, pesquisar usuários.&quot;;
+      }
+      if (permissao_cad_usuario == &quot;S&quot; &amp;&amp; (permissao_alterar_usuario == &quot;N&quot; &amp;&amp; permissao_inserir_usuario == &quot;N&quot; &amp;&amp; permissao_pesquisar_usuario == &quot;N&quot;)){
+        (sender as TextObject).Text += &quot;Permissão para abrir tela de cadastro.&quot;;}
+    }
+  }
+}
+</ScriptText>
+  <Dictionary>
+    <OdbcDataConnection Name="Connection" ConnectionString="rijcmlqvV4JKxFE3hnKXW0yv1+Op9L31HGc92vAXmVHHI70rNjvJ7Fcb8hRJgCQr9vLa155">
+      <TableDataSource Name="dbo_usuario" DataType="System.Int32" Enabled="true" TableName="dbo.&quot;usuario&quot;">
+        <Column Name="ID" DataType="System.Int32"/>
+        <Column Name="NOME" DataType="System.String"/>
+        <Column Name="SENHA" DataType="System.String"/>
+        <Column Name="DATA_CRIACAO" DataType="System.DateTime"/>
+      </TableDataSource>
+      <TableDataSource Name="dbo_permissao_usuario" DataType="System.Int32" Enabled="true" TableName="dbo.&quot;permissao_usuario&quot;" SelectCommand="select * from permissao_usuario&#13;&#10;">
+        <Column Name="alterar_cliente" DataType="System.String"/>
+        <Column Name="alterar_produto" DataType="System.String"/>
+        <Column Name="alterar_usuario" DataType="System.String"/>
+        <Column Name="cad_cliente" DataType="System.String"/>
+        <Column Name="cad_produto" DataType="System.String"/>
+        <Column Name="cad_usuario" DataType="System.String"/>
+        <Column Name="ID" DataType="System.Int32"/>
+        <Column Name="inserir_cliente" DataType="System.String"/>
+        <Column Name="inserir_produto" DataType="System.String"/>
+        <Column Name="inserir_usuario" DataType="System.String"/>
+        <Column Name="Nome" Enabled="false" DataType="System.String"/>
+        <Column Name="pesquisar_cliente" DataType="System.String"/>
+        <Column Name="pesquisar_produto" DataType="System.String"/>
+        <Column Name="pesquisar_usuario" DataType="System.String"/>
+      </TableDataSource>
+      <TableDataSource Name="Table1" Alias="relatorio" DataType="System.Int32" Enabled="true" SelectCommand="select u.senha, u.DATA_CRIACAO, pu.* from usuario u left join permissao_usuario pu on u.ID = pu.ID">
+        <Column Name="senha" DataType="System.String"/>
+        <Column Name="DATA_CRIACAO" DataType="System.DateTime"/>
+        <Column Name="ID" DataType="System.Int32"/>
+        <Column Name="Nome" DataType="System.String"/>
+        <Column Name="cad_cliente" DataType="System.String"/>
+        <Column Name="inserir_cliente" DataType="System.String"/>
+        <Column Name="alterar_cliente" DataType="System.String"/>
+        <Column Name="pesquisar_cliente" DataType="System.String"/>
+        <Column Name="cad_produto" DataType="System.String"/>
+        <Column Name="inserir_produto" DataType="System.String"/>
+        <Column Name="alterar_produto" DataType="System.String"/>
+        <Column Name="pesquisar_produto" DataType="System.String"/>
+        <Column Name="cad_usuario" DataType="System.String"/>
+        <Column Name="inserir_usuario" DataType="System.String"/>
+        <Column Name="alterar_usuario" DataType="System.String"/>
+        <Column Name="pesquisar_usuario" DataType="System.String"/>
+      </TableDataSource>
+    </OdbcDataConnection>
+    <Parameter Name="permissaoUsuarioCliente" DataType="System.String"/>
+  </Dictionary>
+  <ReportPage Name="Page1" Watermark.Font="Arial, 60pt">
+    <ReportTitleBand Name="ReportTitle1" Width="718.2" Height="103.95">
+      <ShapeObject Name="Shape1" Left="9.45" Width="699.3" Height="85.05" Border.Color="Transparent" Fill.Color="LightSkyBlue" Shape="RoundRectangle"/>
+      <TextObject Name="Text1" Left="217.35" Top="28.35" Width="274.05" Height="47.25" Text="Relatório de Usuários" Font="Arial, 18pt, style=Bold" TextFill.Color="White"/>
+    </ReportTitleBand>
+    <PageHeaderBand Name="PageHeader1" Top="107.95" Width="718.2" Height="28.35">
+      <TextObject Name="Text2" Left="9.45" Width="37.8" Height="18.9" Text="ID:" Font="Arial, 8pt, style=Bold"/>
+      <TextObject Name="Text3" Left="56.7" Width="103.95" Height="18.9" Text="Nome:" Font="Arial, 8pt, style=Bold"/>
+      <TextObject Name="Text4" Left="170.1" Width="85.05" Height="18.9" Text="Dt. Cadastro:" Font="Arial, 8pt, style=Bold"/>
+      <TextObject Name="Text5" Left="264.6" Width="141.75" Height="18.9" Text="Cadastro de Clientes:" Font="Arial, 8pt, style=Bold"/>
+      <TextObject Name="Text6" Left="415.8" Width="141.75" Height="18.9" Text="Cadastro de Produtos:" Font="Arial, 8pt, style=Bold"/>
+      <TextObject Name="Text7" Left="567" Width="141.75" Height="18.9" Text="Cadastro de Usuários:" Font="Arial, 8pt, style=Bold"/>
+    </PageHeaderBand>
+    <DataBand Name="Data1" Top="140.3" Width="718.2" Height="47.25" DataSource="Table1">
+      <TextObject Name="Text11" Left="264.6" Width="141.75" Height="18.9" CanGrow="true" BeforePrintEvent="Text11_BeforePrint" Font="Arial, 8pt"/>
+      <TextObject Name="Text12" Left="415.8" Width="141.75" Height="18.9" CanGrow="true" BeforePrintEvent="Text12_BeforePrint" Font="Arial, 8pt"/>
+      <TextObject Name="Text13" Left="567" Width="141.75" Height="18.9" CanGrow="true" BeforePrintEvent="Text13_BeforePrint" Font="Arial, 8pt"/>
+      <TextObject Name="Text8" Left="56.7" Width="103.95" Height="18.9" Text="[relatorio.Nome]" Font="Arial, 8pt"/>
+      <TextObject Name="Text9" Left="9.45" Width="37.8" Height="18.9" Text="[relatorio.ID]" Font="Arial, 8pt"/>
+      <TextObject Name="Text10" Left="170.1" Width="85.05" Height="18.9" Text="[relatorio.DATA_CRIACAO]" Format="Date" Format.Format="d" Font="Arial, 8pt"/>
+    </DataBand>
+    <PageFooterBand Name="PageFooter1" Top="191.55" Width="718.2" Height="18.9"/>
+  </ReportPage>
+</Report>

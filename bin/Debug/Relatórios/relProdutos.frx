@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="09/19/2024 10:13:00" ReportInfo.Modified="09/19/2024 10:27:21" ReportInfo.CreatorVersion="2020.1.17.0">
+  <Dictionary>
+    <OdbcDataConnection Name="Connection" ConnectionString="rijcmlqvV4JKxFE3hnKXW0yv1+Op9L31HGc92vAXmVHHI70rNhR//LcoF2VStTB7QnBfTBP">
+      <TableDataSource Name="dbo_Produto" DataType="System.Int32" Enabled="true" TableName="dbo.&quot;Produto&quot;">
+        <Column Name="Id" DataType="System.Int32"/>
+        <Column Name="CodBarras" DataType="System.Int32"/>
+        <Column Name="Descricao" DataType="System.String"/>
+        <Column Name="CFOP" Enabled="false" DataType="System.String"/>
+        <Column Name="Fornecedor" DataType="System.String"/>
+        <Column Name="Marca" DataType="System.String"/>
+        <Column Name="Unidade" DataType="System.String"/>
+        <Column Name="PrCompra" DataType="System.Decimal"/>
+        <Column Name="ValorVenda" DataType="System.Decimal"/>
+        <Column Name="Departamento" Enabled="false" DataType="System.String"/>
+        <Column Name="Complemento" Enabled="false" DataType="System.String"/>
+      </TableDataSource>
+    </OdbcDataConnection>
+  </Dictionary>
+  <ReportPage Name="Page1" Watermark.Font="Arial, 60pt">
+    <ReportTitleBand Name="ReportTitle1" Width="718.2" Height="103.95">
+      <ShapeObject Name="Shape1" Left="9.45" Width="699.3" Height="85.05" Border.Color="Transparent" Border.Width="0" Fill.Color="LightSkyBlue" Shape="RoundRectangle"/>
+      <TextObject Name="Text1" Left="217.35" Top="28.35" Width="274.05" Height="47.25" Text="Relatório de Produtos" Font="Arial, 18pt, style=Bold" TextFill.Color="White"/>
+    </ReportTitleBand>
+    <PageHeaderBand Name="PageHeader1" Top="107.95" Width="718.2" Height="18.9">
+      <TextObject Name="Text2" Left="9.45" Width="28.35" Height="18.9" Text="ID:" Font="Arial, 8pt, style=Bold"/>
+      <TextObject Name="Text3" Left="37.8" Width="75.6" Height="18.9" Text="Cód. Barras:&#13;&#10;" Font="Arial, 8pt, style=Bold"/>
+      <TextObject Name="Text4" Left="113.4" Width="85.05" Height="18.9" Text="Descrição:" Font="Arial, 8pt, style=Bold"/>
+      <TextObject Name="Text5" Left="283.5" Width="94.5" Height="18.9" Text="Fornecedor:" Font="Arial, 8pt, style=Bold"/>
+      <TextObject Name="Text6" Left="387.45" Width="94.5" Height="18.9" Text="Marca:" Font="Arial, 8pt, style=Bold"/>
+      <TextObject Name="Text7" Left="481.95" Width="37.8" Height="18.9" Text="UN:" Font="Arial, 8pt, style=Bold"/>
+      <TextObject Name="Text8" Left="519.75" Width="94.5" Height="18.9" Text="Pr. Compra:" Font="Arial, 8pt, style=Bold"/>
+      <TextObject Name="Text9" Left="623.7" Width="85.05" Height="18.9" Text="Pr. Venda:" Font="Arial, 8pt, style=Bold"/>
+    </PageHeaderBand>
+    <DataBand Name="Data1" Top="130.85" Width="718.2" Height="28.35" DataSource="dbo_Produto">
+      <TextObject Name="Text10" Left="9.45" Width="18.9" Height="18.9" Text="[dbo_Produto.Id]" Font="Arial, 8pt"/>
+      <TextObject Name="Text11" Left="37.8" Width="66.15" Height="18.9" Text="[dbo_Produto.CodBarras]" Font="Arial, 8pt"/>
+      <TextObject Name="Text12" Left="113.4" Width="160.65" Height="18.9" Text="[dbo_Produto.Descricao]" Font="Arial, 8pt"/>
+      <TextObject Name="Text13" Left="283.5" Width="94.5" Height="18.9" Text="[dbo_Produto.Fornecedor]" Font="Arial, 8pt"/>
+      <TextObject Name="Text14" Left="387.45" Width="85.05" Height="18.9" Text="[dbo_Produto.Marca]" Font="Arial, 8pt"/>
+      <TextObject Name="Text15" Left="481.95" Width="28.35" Height="18.9" Text="[dbo_Produto.Unidade]" Font="Arial, 8pt"/>
+      <TextObject Name="Text16" Left="519.75" Width="94.5" Height="18.9" Text="[dbo_Produto.PrCompra]" Format="Currency" Format.UseLocale="true" Format.DecimalDigits="2" Font="Arial, 8pt"/>
+      <TextObject Name="Text17" Left="623.7" Width="85.05" Height="18.9" Text="[dbo_Produto.ValorVenda]" Format="Currency" Format.UseLocale="true" Format.DecimalDigits="2" Font="Arial, 8pt"/>
+    </DataBand>
+    <PageFooterBand Name="PageFooter1" Top="163.2" Width="718.2" Height="37.8">
+      <RichObject Name="Rich1" Left="604.8" Top="9.45" Width="94.5" Height="18.9" Text="{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1046{\fonttbl{\f0\fnil Arial;}{\f1\fnil\fcharset0 Arial;}{\f2\fnil Tahoma;}}&#13;&#10;{\*\generator Riched20 10.0.19041}\viewkind4\uc1 &#13;&#10;\pard\qr\f0\fs20 [Page#]\f1 /[TotalPages#]\f2\fs17\par&#13;&#10;}&#13;&#10;"/>
+    </PageFooterBand>
+  </ReportPage>
+</Report>

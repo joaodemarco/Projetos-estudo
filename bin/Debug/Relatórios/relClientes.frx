@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="09/18/2024 10:11:41" ReportInfo.Modified="09/18/2024 10:38:38" ReportInfo.CreatorVersion="2020.1.17.0">
+  <Dictionary>
+    <OdbcDataConnection Name="Connection" ConnectionString="rijcmlqvV4JKxFE3hnKXW0yv1+Op9L31HGc92vAXmVHHI70rNjT2V4tpnLCzYGjSL2ReJ5c">
+      <TableDataSource Name="dbo_Cliente" DataType="System.Int32" Enabled="true" TableName="dbo.&quot;Cliente&quot;">
+        <Column Name="Id" DataType="System.Int32"/>
+        <Column Name="Nome" DataType="System.String"/>
+        <Column Name="Fantasia" Enabled="false" DataType="System.String"/>
+        <Column Name="Logradouro" Enabled="false" DataType="System.String"/>
+        <Column Name="Endereco" Enabled="false" DataType="System.String"/>
+        <Column Name="NumeroEndereco" Enabled="false" DataType="System.Int32"/>
+        <Column Name="Bairro" Enabled="false" DataType="System.String"/>
+        <Column Name="Estado" DataType="System.String"/>
+        <Column Name="Cidade" DataType="System.String"/>
+        <Column Name="CEP" Enabled="false" DataType="System.String"/>
+        <Column Name="Tipo" DataType="System.String"/>
+        <Column Name="CPF" DataType="System.String"/>
+        <Column Name="CNPJ" DataType="System.String"/>
+        <Column Name="Telefone" Enabled="false" DataType="System.String"/>
+        <Column Name="Celular" DataType="System.String"/>
+        <Column Name="Email" Enabled="false" DataType="System.String"/>
+        <Column Name="Observacao" Enabled="false" DataType="System.String"/>
+      </TableDataSource>
+    </OdbcDataConnection>
+  </Dictionary>
+  <ReportPage Name="Page1" Watermark.Font="Arial, 60pt">
+    <ReportTitleBand Name="ReportTitle1" Width="718.2" Height="103.95">
+      <ShapeObject Name="Shape1" Left="9.45" Width="689.85" Height="85.05" Border.Color="Transparent" Fill.Color="LightSkyBlue" Shape="RoundRectangle"/>
+      <TextObject Name="Text1" Left="217.35" Top="28.35" Width="264.6" Height="47.25" Fill.Color="LightSkyBlue" Text="Relatório de Clientes" Font="Arial, 18pt, style=Bold" TextFill.Color="White"/>
+    </ReportTitleBand>
+    <PageHeaderBand Name="PageHeader1" Top="107.95" Width="718.2" Height="18.9">
+      <TextObject Name="Text2" Left="9.45" Width="28.35" Height="18.9" Text="ID:" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text3" Left="47.25" Width="56.7" Height="18.9" Text="Nome:&#13;&#10;" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text4" Left="255.15" Width="56.7" Height="18.9" Text="Estado:" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text5" Left="378" Width="56.7" Height="18.9" Text="Cidade:" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text6" Left="198.45" Width="47.25" Height="18.9" Text="Tipo:" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text7" Left="481.95" Width="47.25" Height="18.9" Text="CPF:" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text8" Left="585.9" Width="56.7" Height="18.9" Text="CNPJ:" Font="Arial, 10pt, style=Bold"/>
+    </PageHeaderBand>
+    <DataBand Name="Data1" Top="130.85" Width="718.2" Height="37.8" DataSource="dbo_Cliente">
+      <TextObject Name="Text10" Left="9.45" Top="9.45" Width="37.8" Height="18.9" Text="[dbo_Cliente.Id]" Font="Arial, 8pt"/>
+      <TextObject Name="Text11" Left="47.25" Top="9.45" Width="141.75" Height="18.9" CanGrow="true" Text="[dbo_Cliente.Nome]" Font="Arial, 8pt"/>
+      <TextObject Name="Text12" Left="198.45" Top="9.45" Width="47.25" Height="18.9" Text="[dbo_Cliente.Tipo]" Font="Arial, 8pt"/>
+      <TextObject Name="Text13" Left="255.15" Top="9.45" Width="122.85" Height="18.9" Text="[dbo_Cliente.Estado]" Font="Arial, 8pt"/>
+      <TextObject Name="Text14" Left="378" Top="9.45" Width="113.4" Height="18.9" CanGrow="true" Text="[dbo_Cliente.Cidade]" Font="Arial, 8pt"/>
+      <TextObject Name="Text15" Left="481.95" Top="9.45" Width="122.85" Height="18.9" Text="[dbo_Cliente.CPF]" Font="Arial, 8pt"/>
+      <TextObject Name="Text9" Left="585.9" Top="9.45" Width="113.4" Height="18.9" Text="[dbo_Cliente.CNPJ]" Font="Arial, 8pt"/>
+    </DataBand>
+    <PageFooterBand Name="PageFooter1" Top="172.65" Width="718.2" Height="37.8">
+      <RichObject Name="Rich1" Left="604.8" Top="9.45" Width="94.5" Height="18.9" Text="{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1046{\fonttbl{\f0\fnil Arial;}{\f1\fnil\fcharset0 Arial;}{\f2\fnil Tahoma;}}&#13;&#10;{\*\generator Riched20 10.0.19041}\viewkind4\uc1 &#13;&#10;\pard\qr\f0\fs20 [Page#]\f1 /[TotalPages#]\f2\fs17\par&#13;&#10;}&#13;&#10;"/>
+    </PageFooterBand>
+  </ReportPage>
+</Report>
