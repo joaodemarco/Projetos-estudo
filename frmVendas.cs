@@ -998,21 +998,6 @@ namespace CadastroCliente.Fontes
                     }
                     var produtosNaoExcluidos = dalVendas.AtualizarDataGrid(detalheproduto.Numero);
                     dtGridExibirProdutos.DataSource = produtosNaoExcluidos;
-                    dtGridExibirProdutos.Columns["Numero"].Visible = false;
-                    dtGridExibirProdutos.Columns["DataLancamento"].Visible = false;
-                    dtGridExibirProdutos.Columns["CFOP"].Visible = false;
-                    dtGridExibirProdutos.Columns["Fornecedor"].Visible = false;
-                    dtGridExibirProdutos.Columns["Marca"].Visible = false;
-                    dtGridExibirProdutos.Columns["PrCusto"].Visible = false;
-                    dtGridExibirProdutos.Columns["Departamento"].Visible = false;
-                    dtGridExibirProdutos.Columns["Complemento"].Visible = false;
-                    dtGridExibirProdutos.Columns["Excluido"].Visible = false;
-                    dtGridExibirProdutos.Columns["Preco"].DefaultCellStyle.Format = "C2";
-                    dtGridExibirProdutos.Columns["Preco"].DefaultCellStyle.FormatProvider = new CultureInfo("pt-BR");
-                    dtGridExibirProdutos.Columns["Desconto"].DefaultCellStyle.Format = "C2";
-                    dtGridExibirProdutos.Columns["Desconto"].DefaultCellStyle.FormatProvider = new CultureInfo("pt-BR");
-                    dtGridExibirProdutos.Columns["Total"].DefaultCellStyle.Format = "C2";
-                    dtGridExibirProdutos.Columns["Total"].DefaultCellStyle.FormatProvider = new CultureInfo("pt-BR");
                     var valorTotal = dalVendas.TotalGeral(txtNumero.Text);
                     txtDescFinal.Enabled = true;
                     rdPercent.Enabled = true;
@@ -1362,11 +1347,6 @@ namespace CadastroCliente.Fontes
         {
             txtDescFinal.Text = "0,00%";
             txtDescFinal.Select(txtDescFinal.Text.Length - 1, 0);
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("asdasd");
         }
     }
 }
