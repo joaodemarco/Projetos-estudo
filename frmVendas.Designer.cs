@@ -87,7 +87,14 @@
             this.btnSalvarProd = new System.Windows.Forms.Button();
             this.btnExcluirProd = new System.Windows.Forms.Button();
             this.dtGridExibirProdutos = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
+            this.Item = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CodigoProdutoID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Preco1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Desconto1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Unidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel7.SuspendLayout();
@@ -97,7 +104,6 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Gainsboro;
-            this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.panel4);
             this.panel1.Controls.Add(this.btnSalvar);
             this.panel1.Controls.Add(this.panel3);
@@ -748,6 +754,15 @@
             this.dtGridExibirProdutos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dtGridExibirProdutos.BackgroundColor = System.Drawing.Color.White;
             this.dtGridExibirProdutos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtGridExibirProdutos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Item,
+            this.CodigoProdutoID,
+            this.Descricao,
+            this.Preco1,
+            this.Quantidade,
+            this.Desconto1,
+            this.Total,
+            this.Unidade});
             this.dtGridExibirProdutos.Enabled = false;
             this.dtGridExibirProdutos.Location = new System.Drawing.Point(349, 288);
             this.dtGridExibirProdutos.MultiSelect = false;
@@ -763,15 +778,69 @@
             this.dtGridExibirProdutos.TabIndex = 27;
             this.dtGridExibirProdutos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtGridExibirProdutos_CellDoubleClick);
             // 
-            // button1
+            // Item
             // 
-            this.button1.Location = new System.Drawing.Point(590, 35);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.Item.DataPropertyName = "Item";
+            this.Item.HeaderText = "Item:";
+            this.Item.Name = "Item";
+            this.Item.ReadOnly = true;
+            this.Item.Width = 55;
+            // 
+            // CodigoProdutoID
+            // 
+            this.CodigoProdutoID.DataPropertyName = "CodigoProdutoID";
+            this.CodigoProdutoID.HeaderText = "ID:";
+            this.CodigoProdutoID.Name = "CodigoProdutoID";
+            this.CodigoProdutoID.ReadOnly = true;
+            this.CodigoProdutoID.Width = 46;
+            // 
+            // Descricao
+            // 
+            this.Descricao.DataPropertyName = "Descricao";
+            this.Descricao.HeaderText = "Descrição:";
+            this.Descricao.Name = "Descricao";
+            this.Descricao.ReadOnly = true;
+            this.Descricao.Width = 83;
+            // 
+            // Preco1
+            // 
+            this.Preco1.DataPropertyName = "Preco";
+            this.Preco1.HeaderText = "Preço:";
+            this.Preco1.Name = "Preco1";
+            this.Preco1.ReadOnly = true;
+            this.Preco1.Width = 63;
+            // 
+            // Quantidade
+            // 
+            this.Quantidade.DataPropertyName = "Quantidade";
+            this.Quantidade.HeaderText = "Quantidade:";
+            this.Quantidade.Name = "Quantidade";
+            this.Quantidade.ReadOnly = true;
+            this.Quantidade.Width = 90;
+            // 
+            // Desconto1
+            // 
+            this.Desconto1.DataPropertyName = "Desconto";
+            this.Desconto1.HeaderText = "Desconto:";
+            this.Desconto1.Name = "Desconto1";
+            this.Desconto1.ReadOnly = true;
+            this.Desconto1.Width = 81;
+            // 
+            // Total
+            // 
+            this.Total.DataPropertyName = "Total";
+            this.Total.HeaderText = "Total:";
+            this.Total.Name = "Total";
+            this.Total.ReadOnly = true;
+            this.Total.Width = 59;
+            // 
+            // Unidade
+            // 
+            this.Unidade.DataPropertyName = "Unidade";
+            this.Unidade.HeaderText = "Unidade:";
+            this.Unidade.Name = "Unidade";
+            this.Unidade.ReadOnly = true;
+            this.Unidade.Width = 75;
             // 
             // Vendas
             // 
@@ -903,6 +972,13 @@
         private System.Windows.Forms.Button btnSalvarProd;
         private System.Windows.Forms.Button btnExcluirProd;
         private System.Windows.Forms.DataGridView dtGridExibirProdutos;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Item;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CodigoProdutoID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Descricao;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Preco1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Quantidade;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Desconto1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Total;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Unidade;
     }
 }
