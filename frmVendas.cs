@@ -1363,5 +1363,10 @@ namespace CadastroCliente.Fontes
             txtDescFinal.Text = "0,00%";
             txtDescFinal.Select(txtDescFinal.Text.Length - 1, 0);
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("asdasd");
+        }
     }
 }
